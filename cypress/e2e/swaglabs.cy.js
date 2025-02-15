@@ -4,7 +4,7 @@ const selectorsList = {
     usernameField: "#user-name",
     passwordField: "#password",
     loginButton: "#login-button",
-    headerTopBar: "#header_container",
+    headerInventoryContainer: "[data-test='inventory-container']",
     wrongCredencialAlert: "[data-test='error']"
 }    
 
@@ -14,7 +14,7 @@ cy.get(selectorsList.usernameField).type('standard_user')
 cy.get(selectorsList.passwordField).type('secret_sauce')
 cy.get(selectorsList.loginButton).click()
 cy.location('pathname').should('equal', '/inventory.html')
-cy.get(selectorsList.headerTopBar).contains('Products')
+cy.get(selectorsList.headerInventoryContainer)
 
 })
 
