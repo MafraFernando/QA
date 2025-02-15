@@ -1,8 +1,18 @@
 describe('Orange HRM tests', () => {
   it('Login - Sucess', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type('Admin')
-    cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type('admin123')
-    cy.get('.oxd-button').click()
+    cy.get("[name='username']").type('Admin')
+    cy.get("[name='password']").type('admin123')
+    cy.get('button').click()
+    cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
+    cy.get('.oxd-layout').contains('Dashboard')
   })
+it('Login - Fail', () => {
+  cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+  cy.get("[name='username']").type('test ')
+  cy.get("[name='password']").type('test123')
+  cy.get('button').click()
+  cy.get('.oxd-alert--error')
+
+})
 })
