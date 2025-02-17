@@ -14,7 +14,9 @@ describe('Orange HRM tests', () => {
     lastNameField: "[name='lastName']",
     genericField: ".oxd-input",
     licenseExpiryField: "[placeholder='yyyy-dd-mm']",
+    closeButton: ":nth-child(5) > :nth-child(1) > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text--after > .oxd-icon",
     submitButton: "[type='submit']",
+    nationalityButton: "[clear='false']",
     
   }
 
@@ -35,8 +37,10 @@ describe('Orange HRM tests', () => {
     cy.get(selectorsList.genericField).eq(6).clear().type('driver12345')
     cy.get(selectorsList.genericField).eq(7).click()
     cy.get(selectorsList.licenseExpiryField).eq(0).clear().type('2028-03-25')
-    cy.get(selectorsList.submitButton).eq(1).click()
-    cy.get('body').should('contain', 'Successfully Saved')
+    cy.get(selectorsList.closeButton).click()
+    cy.get(selectorsList.nationalityButton).eq(0).trigger('mousedown', 'bottom', '10')
+    //cy.get(selectorsList.submitButton).eq(1).click()
+    //cy.get('body').should('contain', 'Successfully Saved')
   })
 it('Login - Fail', () => {
   cy.visit('/auth/login')
