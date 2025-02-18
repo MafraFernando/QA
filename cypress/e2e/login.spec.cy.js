@@ -2,11 +2,14 @@ import userData from '../fixtures/user/userData.json'
 import LoginPage from '../pages/loginPage.js'
 import DashboardPage from '../pages/dashboardPage.js'
 import NavBarPage from '../pages/navBarPage.js'
+import MyInfoPage from '../pages/myInfoPage.js'
+
 
 
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 const navBarPage = new NavBarPage()
+const myInfoPage = new MyInfoPage()
 
 describe('Orange HRM tests', () => {
 
