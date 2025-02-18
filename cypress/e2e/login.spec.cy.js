@@ -1,15 +1,17 @@
 import userData from '../fixtures/user/userData.json'
-import loginPage from '../pages/loginPages.js'
+import LoginPage from '../pages/loginPage.js'
+import DashboardPage from '../pages/dashboardPage.js'
+import NavBarPage from '../pages/navBarPage.js'
 
-const loginPage = new loginPage()
+
+const loginPage = new LoginPage()
+const dashboardPage = new DashboardPage()
+const navBarPage = new NavBarPage()
 
 describe('Orange HRM tests', () => {
 
   const selectorsList = { 
     
-    headerGrid: ".orangehrm-dashboard-grid",
-    
-    myInfoButton: "[href='/web/index.php/pim/viewMyDetails']",
     firstNameField: "[name='firstName']",
     middleNameField: "[name='middleName']",
     lastNameField: "[name='lastName']",
@@ -25,10 +27,10 @@ describe('Orange HRM tests', () => {
 
   it.only('Login - Sucess', () => {
     loginPage.accessLoginPage()
+    loginPage.loginAnyWithUser(userData.userSucess.username, userData.userSucess.password)
+    dashboardPage.checkDashboardPage()
+    navBarPage.accessMyInfo()
    
-   // cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-   // cy.get(selectorsList.headerGrid)
-   // cy.get(selectorsList.myInfoButton).click()
    // cy.get(selectorsList.firstNameField).clear().type('Teste')
    // cy.get(selectorsList.middleNameField).clear().type('da')
    // cy.get(selectorsList.lastNameField).clear().type('Silva')
