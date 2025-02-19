@@ -13,18 +13,18 @@ const myInfoPage = new MyInfoPage()
 
 describe('Orange HRM tests', () => {
 
-  const selectorsList = { 
-    
-    
-  }
-
 
   it.only('Login - Sucess', () => {
     loginPage.accessLoginPage()
     loginPage.loginAnyWithUser(userData.userSucess.username, userData.userSucess.password)
+
     dashboardPage.checkDashboardPage()
+
     navBarPage.accessMyInfo()
-    myInfoPage.myInfoData()
+
+    myInfoPage.fillPersonalDetails('Testador', 'de', 'Souza')
+    myInfoPage.fillEmployeeDetails('Fm845Tester', '123Tester', '123456', '2028-05-28')
+    myInfoPage.statusDetails()
     myInfoPage.myInfoSave()
    
     
