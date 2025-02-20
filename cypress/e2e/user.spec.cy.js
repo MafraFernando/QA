@@ -4,12 +4,15 @@ import DashboardPage from '../pages/dashboardPage.js'
 import NavBarPage from '../pages/navBarPage.js'
 import MyInfoPage from '../pages/myInfoPage.js'
 
+const Chance = require('chance')
 
-
+const chance = new Chance()
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 const navBarPage = new NavBarPage()
 const myInfoPage = new MyInfoPage()
+
+
 
 describe('Orange HRM tests', () => {
 
@@ -22,8 +25,8 @@ describe('Orange HRM tests', () => {
 
     navBarPage.accessMyInfo()
 
-    myInfoPage.fillPersonalDetails('Testador', 'de', 'Souza')
-    myInfoPage.fillEmployeeDetails('845Tester', '123Tester', '123456', '2028-05-28')
+    myInfoPage.fillPersonalDetails(chance.first(), chance.first(), chance.last())
+    myInfoPage.fillEmployeeDetails(chance.ssn(), chance.ssn(), chance.ssn(), chance.date({string: true}))
     myInfoPage.statusDetails()
     myInfoPage.myInfoSave()
    
