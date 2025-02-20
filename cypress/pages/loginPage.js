@@ -4,7 +4,7 @@ class loginPage {
             usernameField: "[name='username']",
             passwordField: "[name='password']",
             loginButton: "button",
-            erroAlert: ".oxd-alert--error",
+            erroAlert: ".oxd-alert-content-text",
         }  
             return selectors
      }
@@ -17,6 +17,10 @@ class loginPage {
         cy.get(this.selectorsList().usernameField).type(username)
         cy.get(this.selectorsList().passwordField).type(password)
         cy.get(this.selectorsList().loginButton).click()
+    }
+
+    loginWithErrorAlert() {
+        cy.get(this.selectorsList().erroAlert)
     }
 }
 

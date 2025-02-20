@@ -14,7 +14,7 @@ const myInfoPage = new MyInfoPage()
 describe('Orange HRM tests', () => {
 
 
-  it.only('Login - Sucess', () => {
+  it('Login - Sucess', () => {
     loginPage.accessLoginPage()
     loginPage.loginAnyWithUser(userData.userSucess.username, userData.userSucess.password)
 
@@ -23,18 +23,16 @@ describe('Orange HRM tests', () => {
     navBarPage.accessMyInfo()
 
     myInfoPage.fillPersonalDetails('Testador', 'de', 'Souza')
-    myInfoPage.fillEmployeeDetails('Fm845Tester', '123Tester', '123456', '2028-05-28')
+    myInfoPage.fillEmployeeDetails('845Tester', '123Tester', '123456', '2028-05-28')
     myInfoPage.statusDetails()
     myInfoPage.myInfoSave()
    
     
   })
 it('Login - Fail', () => {
-  cy.visit('/auth/login')
-  cy.get(selectorsList.usernameField).type(userData.userFail.username)
-  cy.get(selectorsList.passwordField).type(userData.userFail.password)
-  cy.get(selectorsList.loginButton).click()
-  cy.get(selectorsList.erroAlert)
+  loginPage.accessLoginPage()
+  loginPage.loginAnyWithUser(userData.userFail.username, userData.userFail.password)
+  loginPage.loginWithErrorAlert()
 
 })
 })
